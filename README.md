@@ -57,12 +57,12 @@ with app.run():
         "MALLWMRLLPLLALLALWGPD",
         "MKTVRQERLKSIVRILERSKEPVSGAQ"
     ]
-    sequence_ids = ["seq1", "seq2"]
+
     inference_params = {
         "num_recycles": 3,
         "num_samples": 1
     }
-    chai_results = chai.predict_structures.remote(sequences, sequence_ids, inference_params)
+    chai_results = chai.predict_structures.remote(sequences, inference_params)
     print(f"Chai predicted {len(chai_results)} structures")
 
 # Example for ESMFold
