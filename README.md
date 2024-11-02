@@ -10,52 +10,17 @@ logo
 
 ---
 
-Helix provides a set of modular, Lego-like components for constructing bioinformatics workflows. By abstracting away infrastructure complexities, Helix allows researchers to focus on biological problems rather than computational logistics. Built on [Modal](https://modal.com), it offers efficient cloud-based execution for large-scale computational tasks.
+Helix provides a set of modular, Lego-like components for constructing bioinformatics workflows. By abstracting away infrastructure complexities, Helix allows researchers to focus on biological problems rather than computational logistics. Built on [Modal](https://modal.com), it offers efficient cloud-based execution for large-scale computational tasks. Leveraging Modal's features, Helix provides flexible environments, seamless integrations with various services, efficient data management, advanced job scheduling, and built-in debugging tools, all while enabling easy deployment of web services.
 
 ## 🧩 Core Philosophy
 
-Helix is designed to offer flexible, scalable "building blocks" for bioinformatics pipelines. These components abstract environments and infrastructure, allowing for the rapid assembly of complex workflows. The focus is on leveraging Modal's features to provide a powerful, yet user-friendly platform for biological computation.
-
-## 🛠 Key Features
-
-1. **Flexible Environments**:
-
-   - Bring your own Docker image or build one in Python
-   - Scale resources dynamically as needed
-   - Access state-of-the-art GPUs (H100s, A100s) for high-performance computing
-
-2. **Seamless Integrations**:
-
-   - Export function logs to Datadog or any OpenTelemetry-compatible provider
-   - Mount cloud storage from major providers (S3, R2, etc.)
-
-3. **Efficient Data Management**:
-
-   - Utilize various storage solutions: network volumes, key-value stores, queues
-   - Provision and interact with storage using familiar Python syntax
-
-4. **Advanced Job Scheduling**:
-
-   - Set up cron jobs, retries, and timeouts
-   - Optimize resource usage through batching capabilities
-
-5. **Web Service Deployment**:
-
-   - Create custom domains for your services
-   - Set up streaming and websockets
-   - Serve functions as secure HTTPS endpoints
-
-6. **Built-In Debugging Tools**:
-   - Use the Modal shell for interactive debugging
-   - Set breakpoints to quickly identify and resolve issues
+Helix provides modular components for building scalable bioinformatics pipelines. We've abstracted away infrastructure complexities, allowing researchers to construct workflows using a clean Python API. By leveraging Modal's cloud capabilities, Helix offers powerful distributed computing without the typical overhead. Our design emphasizes programmatic interfaces over CLIs, enabling seamless integration into existing codebases. The goal is to empower bioinformaticians to focus on algorithm development and data analysis, rather than resource management and deployment logistics.
 
 ## ⚙️ Getting Started
 
 1. Create an account at [modal.com](https://modal.com) for cloud execution access.
 2. Install Helix: `pip install helixbio` (Python 3.10+ required)
 3. Set up Modal: `modal token new`
-
-Helix aims to empower bioinformaticians and computational biologists by providing a robust set of cloud-enabled tools and abstractions, streamlining the development of scalable and efficient bioinformatics pipelines.
 
 ## 🧬 Examples
 
