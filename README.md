@@ -1,6 +1,4 @@
 <div align="center">
-logo
-<hr>
 
 ### **🧬 Helix: Modular Components for Bioinformatics Workflows with Modal**
 
@@ -9,6 +7,8 @@ logo
 </div>
 
 ---
+
+<br></br>
 
 Helix provides a set of modular, Lego-like components for constructing bioinformatics workflows. By abstracting away infrastructure complexities, Helix allows researchers to focus on biological problems rather than computational logistics. Built on [Modal](https://modal.com), it offers efficient cloud-based execution for large-scale computational tasks. Leveraging Modal's features, Helix provides flexible environments, seamless integrations with various services, efficient data management, advanced job scheduling, and built-in debugging tools, all while enabling easy deployment of web services.
 
