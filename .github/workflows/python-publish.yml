@@ -2,7 +2,7 @@ name: Publish Python package
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   release:
     types: [created]
 
@@ -14,12 +14,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
-      - name: Install Poetry
-        run: pip install poetry
+          python-version: "3.9"
+      - name: Install uv
+        run: pip install uv
       - name: Build and publish to PyPI
         env:
           PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          poetry build
-          poetry publish --username __token__ --password $PYPI_API_TOKEN
+          uv build --no-sources
+          uv publish --token $PYPI_API_TOKEN
