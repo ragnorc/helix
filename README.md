@@ -26,9 +26,9 @@ Helix provides modular components for building scalable bioinformatics pipelines
 
 Here are some examples of how to run various functions using the Modal app context:
 
-### Protein Embeddings
+### Compute Protein Embeddings with ESM
 
-    ```python
+```python
     from helix.core import app
     from helix.functions.embedding import get_protein_embeddings
     with app.run():
@@ -41,11 +41,11 @@ Here are some examples of how to run various functions using the Modal app conte
             model_name="facebook/esm2_t33_650M_UR50D",
             embedding_strategy="cls"
         )
-    ```
+```
 
-### Protein Structures
+### Predict Protein Structures with Chai and ESMFold
 
-    ```python
+```python
     from helix.core import app
     from helix.functions import chai, esmfold
 
@@ -71,9 +71,9 @@ Here are some examples of how to run various functions using the Modal app conte
         ]
         esmfold_results = esmfold.predict_structures.remote(sequences, batch_size=2)
         print(f"ESMFold predicted {len(esmfold_results)} structures")
-    ```
+```
 
-### Mutation Scoring
+### Score Mutation using Protein Language Models
 
 Mutation scoring uses pre-trained language models to evaluate the impact of amino acid substitutions in protein sequences. This implementation is based on the methods developed by Brian Hie and colleagues, as described in their Nature Biotechnology paper (Hie et al., 2024). The function supports different scoring methods:
 
@@ -85,7 +85,7 @@ These methods have been shown to be effective in guiding the evolution of human 
 
 Here's an example of how to use the mutation scoring function:
 
-    ```python
+```python
     from helix.core import app
     from helix.functions.scoring.protein import score_mutations
 
@@ -108,9 +108,7 @@ Here's an example of how to use the mutation scoring function:
         print(f"Scores for {model_name} using {metric}:")
         print(scores)
 
-    ```
+```
 
 Reference:
 Hie, B.L., Shanker, V.R., Xu, D. et al. Efficient evolution of human antibodies from general protein language models. Nat Biotechnol 42, 275–283 (2024). https://doi.org/10.1038/s41587-023-01763-2
-
-    ```
