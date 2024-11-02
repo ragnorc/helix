@@ -29,48 +29,50 @@ Here are some examples of how to run various functions using the Modal app conte
 ### Compute Protein Embeddings with ESM
 
 ```python
-    from helix.core import app
-    from helix.functions.embedding import get_protein_embeddings
-    with app.run():
-        sequences = [
-            "MALLWMRLLPLLALLALWGPD",
-            "MKTVRQERLKSIVRILERSKEPVSGAQ"
-        ]
-        result = get_protein_embeddings.remote(
-            sequences,
-            model_name="facebook/esm2_t33_650M_UR50D",
-            embedding_strategy="cls"
-        )
+from helix.core import app
+from helix.functions.embedding import get_protein_embeddings
+
+
+with app.run():
+    sequences = [
+        "MALLWMRLLPLLALLALWGPD",
+        "MKTVRQERLKSIVRILERSKEPVSGAQ"
+    ]
+    result = get_protein_embeddings.remote(
+        sequences,
+        model_name="facebook/esm2_t33_650M_UR50D",
+        embedding_strategy="cls"
+    )
 ```
 
 ### Predict Protein Structures with Chai and ESMFold
 
 ```python
-    from helix.core import app
-    from helix.functions import chai, esmfold
+from helix.core import app
+from helix.functions import chai, esmfold
 
-    # Example for Chai
-    with app.run():
-        sequences = [
-            "MALLWMRLLPLLALLALWGPD",
-            "MKTVRQERLKSIVRILERSKEPVSGAQ"
-        ]
-        sequence_ids = ["seq1", "seq2"]
-        inference_params = {
-            "num_recycles": 3,
-            "num_samples": 1
-        }
-        chai_results = chai.predict_structures.remote(sequences, sequence_ids, inference_params)
-        print(f"Chai predicted {len(chai_results)} structures")
+# Example for Chai
+with app.run():
+    sequences = [
+        "MALLWMRLLPLLALLALWGPD",
+        "MKTVRQERLKSIVRILERSKEPVSGAQ"
+    ]
+    sequence_ids = ["seq1", "seq2"]
+    inference_params = {
+        "num_recycles": 3,
+        "num_samples": 1
+    }
+    chai_results = chai.predict_structures.remote(sequences, sequence_ids, inference_params)
+    print(f"Chai predicted {len(chai_results)} structures")
 
-    # Example for ESMFold
-    with app.run():
-        sequences = [
-            "MALLWMRLLPLLALLALWGPD",
-            "MKTVRQERLKSIVRILERSKEPVSGAQ"
-        ]
-        esmfold_results = esmfold.predict_structures.remote(sequences, batch_size=2)
-        print(f"ESMFold predicted {len(esmfold_results)} structures")
+# Example for ESMFold
+with app.run():
+    sequences = [
+        "MALLWMRLLPLLALLALWGPD",
+        "MKTVRQERLKSIVRILERSKEPVSGAQ"
+    ]
+    esmfold_results = esmfold.predict_structures.remote(sequences, batch_size=2)
+    print(f"ESMFold predicted {len(esmfold_results)} structures")
 ```
 
 ### Score Mutation using Protein Language Models
@@ -86,27 +88,27 @@ These methods have been shown to be effective in guiding the evolution of human 
 Here's an example of how to use the mutation scoring function:
 
 ```python
-    from helix.core import app
-    from helix.functions.scoring.protein import score_mutations
+from helix.core import app
+from helix.functions.scoring.protein import score_mutations
 
-    with app.run():
-        # Define the sequence and mutations
-        sequence = "MALLWMRLLPLLALLALWGPD"
-        mutations = ["M1A", "L2A", "W5A"]
+with app.run():
+    # Define the sequence and mutations
+    sequence = "MALLWMRLLPLLALLALWGPD"
+    mutations = ["M1A", "L2A", "W5A"]
 
-        # Define model and metric
-        model_name = "facebook/esm2_t33_650M_UR50D"
-        metric = "wildtype_marginal"
+    # Define model and metric
+    model_name = "facebook/esm2_t33_650M_UR50D"
+    metric = "wildtype_marginal"
 
-        # Score mutations
-        scores = score_mutations.remote(
-            model_name=model_name,
-            sequence=sequence,
-            mutations=mutations,
-            metric=metric
-        )
-        print(f"Scores for {model_name} using {metric}:")
-        print(scores)
+    # Score mutations
+    scores = score_mutations.remote(
+        model_name=model_name,
+        sequence=sequence,
+        mutations=mutations,
+        metric=metric
+    )
+    print(f"Scores for {model_name} using {metric}:")
+    print(scores)
 
 ```
 
